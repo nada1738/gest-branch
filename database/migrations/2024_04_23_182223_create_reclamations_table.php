@@ -13,10 +13,7 @@ return new class extends Migration
     {
         Schema::create('reclamations', function (Blueprint $table) {
             $table->id();
-            $table->string('police_rec');
-            $table->string('tournee');
-            $table->string('adresse_rec');
-            $table->string('telephone');
+          
             $table->string('nature_rec');
             $table->date('date_rec');
             $table->date('date_rep');

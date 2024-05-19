@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-<style>
-    .hidden-for-export {
-        display: none;
-    }
-</style>
-@if ($errors->any())
+    <style>
+        .hidden-for-export {
+            display: none;
+        }
+    </style>
+    @if ($errors->any())
         <div>
             <ul>
                 @foreach ($errors->all() as $error)
@@ -89,42 +89,14 @@
                     <th scope="col" class="px-6 py-3">
                         Nature B
                     </th>
-                    
-                    <!--hidden fields-->
-                    <th scope="col" class="px-6 py-3" style="display: none;">
-                        L Branchment
-                    </th>
-                    <th scope="col" class="px-6 py-3" style="display: none;">
-                        L Chassuée
-                    </th>
-                    <th scope="col" class="px-6 py-3" style="display: none;">
-                        Nature chassuée
-                    </th>
-                    <th scope="col" class="px-6 py-3" style="display: none;">
-                        Date versement
-                    </th>
-                    <th scope="col" class="px-6 py-3" style="display: none;">
-                        N° versement
-                    </th>
-                    <th scope="col" class="px-6 py-3" style="display: none;">
-                        Date Reglement
-                    </th>
-                    <th scope="col" class="px-6 py-3" style="display: none;">
-                        Date Realisation
-                    </th>
-                    <th scope="col" class="px-6 py-3" style="display: none;">
-                        DN cond
-                    </th>
-                    <th scope="col" class="px-6 py-3" style="display: none;">
-                        N° Série
-                    </th>
+
                     <th scope="col" class="px-6 py-3">
                         Observation
                     </th>
                     <th scope="col" class="px-6 py-3" id="action">
                         Action
                     </th>
-                    
+
 
 
 
@@ -145,14 +117,14 @@
                             {{ $branchement->n_police }}
                         </td>
 
-                        <td class="px-6 py-4">{{ $branchement->abonnees ? $branchement->abonnees>nom : 'N/A' }}</td>
+                        <td class="px-6 py-4">{{ $branchement->abonnee->nom }}</td>
 
-                        
+
                         <td class="px-6 py-4">
                             {{ $branchement->tournee }}
                         </td>
                         <td class="px-6 py-4">
-                            {{ $branchement->adresse_branch }}
+                            {{ $branchement->abonnee->adresse }}
                         </td>
                         <td class="px-6 py-4">
                             {{ $branchement->nature }}
@@ -184,11 +156,11 @@
                         <td class="px-6 py-4" style="display: none;">
                             {{ $branchement->n_serie }}
                         </td>
-                        <td class="px-6 py-4" >
+                        <td class="px-6 py-4">
                             {{ $branchement->observation }}
                         </td>
-                       
-                       
+
+
                         <td class="px-6 py-4 whitespace-nowrap" id="action">
                             <div x-data="{ open: false }">
                                 <button @click="open = !open" aria-haspopup="true"
@@ -270,33 +242,33 @@
             });
         });
         document.getElementById("exportBtn").addEventListener("click", function() {
-    // Get the table element
-    var table = document.getElementById("my-table");
+            // Get the table element
+            var table = document.getElementById("my-table");
 
-    // Clone the table
-    var clonedTable = table.cloneNode(true);
+            // Clone the table
+            var clonedTable = table.cloneNode(true);
 
-    // Remove the columns with id "action" from the cloned table
-    var actionColumnHeaders = clonedTable.querySelectorAll('th[id="action"]');
-    actionColumnHeaders.forEach(function(header) {
-        header.parentNode.removeChild(header);
-    });
-    var actionColumnCells = clonedTable.querySelectorAll('td[id="action"]');
-    actionColumnCells.forEach(function(cell) {
-        cell.parentNode.removeChild(cell);
-    });
+            // Remove the columns with id "action" from the cloned table
+            var actionColumnHeaders = clonedTable.querySelectorAll('th[id="action"]');
+            actionColumnHeaders.forEach(function(header) {
+                header.parentNode.removeChild(header);
+            });
+            var actionColumnCells = clonedTable.querySelectorAll('td[id="action"]');
+            actionColumnCells.forEach(function(cell) {
+                cell.parentNode.removeChild(cell);
+            });
 
-    // Convert cloned table to workbook
-    var wb = XLSX.utils.table_to_book(clonedTable);
+            // Convert cloned table to workbook
+            var wb = XLSX.utils.table_to_book(clonedTable);
 
-    // Get today's date
-    var today = new Date().toISOString().slice(0, 10);
+            // Get today's date
+            var today = new Date().toISOString().slice(0, 10);
 
-    // Generate the filename with the current date
-    var filename = "branchements_" + today + ".xlsx";
+            // Generate the filename with the current date
+            var filename = "branchements_" + today + ".xlsx";
 
-    // Save the workbook as Excel file with the filename including the current date
-    XLSX.writeFile(wb, filename);
-});
+            // Save the workbook as Excel file with the filename including the current date
+            XLSX.writeFile(wb, filename);
+        });
     </script>
 @endsection

@@ -34,6 +34,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('abonnees', AbonneeController::class);
     Route::resource('branchements', BranchementController::class);
     Route::resource('reclamations', ReclamationController::class);
+    Route::get('branchements/{branchement}/pdf', [BranchementController::class, 'pdf'])->name('branchements.pdf');
+    Route::get('reclamations/{reclamation}/pdf', [ReclamationController::class, 'generatePdf'])->name('reclamations.pdf');
 
 });
 

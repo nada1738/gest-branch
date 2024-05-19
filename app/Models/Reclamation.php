@@ -8,11 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class Reclamation extends Model
 {
     use HasFactory;
-    protected $fillable = ['police_rec','nature_rec','adresse_rec', 'date_rec', 'branchement_id' , 'telephone' ,'date_rep' ,'tournee' ];
-    
-    
+
+    protected $table = 'reclamations';
+
+    protected $fillable = [
+        
+        'nature_rec',
+        'date_rec',
+        'date_rep',
+        'n_order',
+    ];
+
     public function branchement()
     {
-        return $this->belongsTo(Branchement::class, 'branchamant_id');
+        return $this->belongsTo(Branchement::class, 'n_order', 'n_order');
     }
 }

@@ -31,17 +31,6 @@
                 </select>
             </div>
             
-            <div>
-                <label for="cne" class="block text-sm font-medium text-gray-700">Cne:</label>
-                <input type="text" id="cne" name="cne" value="{{ old('cne') }}"
-                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-400 focus:ring focus:ring-primary-200 focus:ring-opacity-50">
-            </div>
-
-
-            
-    
-            
-            
             
             <div>
                 <label for="tournee" class="block text-sm font-medium text-gray-700">Tournee:</label>
