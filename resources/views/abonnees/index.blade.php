@@ -2,7 +2,11 @@
 
 @section('content')
     <div class="container mx-auto px-4">
+<<<<<<< HEAD
         <h1 class="text-2xl font-bold mt-8 mb-4">Abonnees</h1>
+=======
+        <h1 class="text-2xl font-bold mt-8 mb-4">Toutes les Abonnees</h1>
+>>>>>>> 7864392ac40bac7bb1ad278d4604afda2581fea1
 
         <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
             <!-- Search Form -->

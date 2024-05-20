@@ -6,7 +6,10 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TourneeController;
 use App\Http\Controllers\BranchementController;
 use App\Http\Controllers\ReclamationController;
+<<<<<<< HEAD
 use App\Http\Controllers\DashboardController;
+=======
+>>>>>>> 7864392ac40bac7bb1ad278d4604afda2581fea1
 
 /*
 |--------------------------------------------------------------------------
@@ -37,7 +40,10 @@ Route::middleware('auth')->group(function () {
     Route::resource('reclamations', ReclamationController::class);
     Route::get('branchements/{branchement}/pdf', [BranchementController::class, 'pdf'])->name('branchements.pdf');
     Route::get('reclamations/{reclamation}/pdf', [ReclamationController::class, 'generatePdf'])->name('reclamations.pdf');
+<<<<<<< HEAD
     Route::get('/accueil', [DashboardController::class, 'index'])->name('accueil');
+=======
+>>>>>>> 7864392ac40bac7bb1ad278d4604afda2581fea1
 
 });
 
